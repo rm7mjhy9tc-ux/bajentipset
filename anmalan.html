@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anmälan till Bajentipset 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<script>
+/* =====================================================================
+   INSTÄLLNINGAR – ändra här inför varje säsong
+   ===================================================================== */
+window.CONFIG = {
+  season: 2027,
+  // Sista dag att lämna tips (ÅÅÅÅ-MM-DD). Efter detta datum stängs formuläret. Lämna tomt för att aldrig stänga.
+  deadline: "",
+  // Valfri text om avgift, t.ex. "Avgift 100 kr. Swisha till 070-123 45 67 och skriv ditt namn."
+  fee: "",
+  // De 16 lagen i Allsvenskan. Byt ut nedflyttade mot uppflyttade lag när säsongen är avgjord.
+  teams: ["AIK","Brommapojkarna","Degerfors","Djurgården","Elfsborg","GAIS","Halmstad","Hammarby","Häcken","IFK Göteborg","Kalmar","Malmö FF","Mjällby","Sirius","Västerås","Örgryte"],
+  // Hammarbys matcher i omgångsordning, t.ex. ["Hammarby-AIK","Sirius-Hammarby", ...] (30 st).
+  // Lämna tomt så visas en match hemma och en borta mot varje lag i stället.
+  fixtures: [],
+  // Förslag i målskyttefälten. Deltagarna kan även skriva andra namn.
+  suggestions: {
+    back: ["Hampus Skoglund","Ibrahima Fofana","Noah Persson","Victor Eriksson"],
+    mittfaltare: ["Nahir Besara","Oscar Johansson Schellas"],
+    anfallare: ["Paulos Abraham","Victor Lind","Montader Madjed"],
+    allsvenskan: ["Kristian Lien","Arnor Sigurdsson","Jacob Bergström","Jeppe Kjaer Jensen","Max Fenger","Odera Samuel Adindu"]
+  },
+  questions: [
+    "I vilken omgång tar Hammarby sin sjunde poäng?",
+    "I vilken omgång tar Hammarby sin tredje seger?",
+    "Hur många poäng tar Hammarby mot AIK?",
+    "Hur många poäng tar Hammarby mot Djurgården?",
+    "I vilken omgång avgörs vem som vinner Allsvenskan?"
+  ]
+};
+</script>
+<style>
+:root{
+  --bg:#F1F5F1;--surface:#FFFFFF;--ink:#13261B;--muted:#56695C;--line:#D3DDD5;
+  --green:#00733A;--green-ink:#FFFFFF;--deep:#0D3321;--soft:#DCEFE2;--soft-ink:#0D4A28;
+  --warn:#9A3B12;--warn-bg:#FBE9DF;--stripe-a:#00733A;--stripe-b:#FFFFFF;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1912;--surface:#15241A;--ink:#E6EFE8;--muted:#9AB1A1;--line:#2A3D30;
+  --green:#3DBE72;--green-ink:#06210F;--deep:#0A2416;--soft:#1D3B28;--soft-ink:#BFEAD0;
+  --warn:#FFB38A;--warn-bg:#3A2117;--stripe-a:#1E8C4E;--stripe-b:#D9E6DC;color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0E1912;--surface:#15241A;--ink:#E6EFE8;--muted:#9AB1A1;--line:#2A3D30;
+  --green:#3DBE72;--green-ink:#06210F;--deep:#0A2416;--soft:#1D3B28;--soft-ink:#BFEAD0;
+  --warn:#FFB38A;--warn-bg:#3A2117;--stripe-a:#1E8C4E;--stripe-b:#D9E6DC;color-scheme:dark;}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 24px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Barlow",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3,.num{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.hero{background:repeating-linear-gradient(90deg,var(--stripe-a) 0 34px,var(--stripe-b) 34px 68px);padding:40px 16px 0}
+.plate{max-width:760px;margin:0 auto;background:var(--deep);color:#fff;padding:18px 22px 18px}
+.plate h1{margin:0;font-size:clamp(2.2rem,7vw,3.4rem);line-height:.95;font-weight:700}
+.plate p{margin:8px 0 0;color:#BFD8C8}
+main{max-width:760px;margin:0 auto;padding:8px 16px 140px}
+section{margin-top:28px}
+h2{font-size:1.8rem;margin:0 0 2px;font-weight:700;display:flex;align-items:baseline;gap:10px}
+h2 .n{color:var(--green)}
+.lead{color:var(--muted);margin:0 0 12px;max-width:62ch}
+.box{background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+label.f{display:block;margin-bottom:12px}
+label.f span{display:block;font-weight:600;margin-bottom:4px}
+label.f small{font-weight:400;color:var(--muted)}
+input.t{width:100%;padding:10px 12px;border:1px solid var(--line);background:var(--bg)}
+input.t:focus{border-color:var(--green)}
+.err input.t,.err .g{border-color:var(--warn);background:var(--warn-bg)}
+.fee{background:var(--soft);color:var(--soft-ink);padding:10px 14px;margin-top:12px}
+.matches{background:var(--surface);border:1px solid var(--line)}
+.m{display:grid;grid-template-columns:2.2rem 1fr auto;gap:10px;align-items:center;padding:8px 12px;border-top:1px solid var(--line)}
+.m:first-child{border-top:0}
+.m .r{color:var(--muted);font-family:"Barlow Condensed",sans-serif;font-size:1.05rem}
+.m .lbl b{font-weight:700}
+.m .sc{display:flex;align-items:center;gap:6px}
+input.g{width:2.8rem;height:2.6rem;text-align:center;border:1px solid var(--line);background:var(--bg);font-family:"Barlow Condensed",sans-serif;font-size:1.3rem;font-weight:700}
+.m.done{background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.rank{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:600px){.rank{grid-template-columns:1fr}}
+.rank h3{margin:0 0 6px;font-size:1.15rem}
+.pool{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start}
+.pool button{border:1px solid var(--line);background:var(--surface);padding:7px 12px;cursor:pointer;font-weight:600}
+.pool button:hover{border-color:var(--green)}
+.placed ol{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line)}
+.placed li{display:grid;grid-template-columns:2rem 1fr auto;align-items:center;gap:6px;padding:4px 6px 4px 10px;border-top:1px solid var(--line)}
+.placed li:first-child{border-top:0}
+.placed li .p{font-family:"Barlow Condensed",sans-serif;font-size:1.15rem;color:var(--muted)}
+.placed li.z1 .p,.placed li.z2 .p{color:var(--green)}
+.ic{width:2.1rem;height:2.1rem;border:1px solid transparent;background:none;cursor:pointer;color:var(--muted);font-weight:700}
+.ic:hover{border-color:var(--line);color:var(--ink)}
+.ic[disabled]{opacity:.25;cursor:default}
+.empty{color:var(--muted);padding:10px 12px}
+.q{display:grid;grid-template-columns:1fr 5.5rem;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.q:first-child{border-top:0}
+.q input.t{text-align:center}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--deep);color:#fff;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.bar .in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.prog{flex:1;min-width:200px;font-size:.92rem;color:#CFE3D6}
+.prog b{color:#fff}
+.btn{background:var(--green);color:var(--green-ink);border:0;padding:12px 22px;font-weight:700;cursor:pointer;font-size:1.05rem}
+.btn[disabled]{opacity:.55;cursor:default}
+.errors{background:var(--warn-bg);color:var(--warn);padding:12px 16px;margin-top:20px}
+.errors ul{margin:6px 0 0;padding-left:20px}
+.errors a{color:inherit}
+.thanks{margin-top:28px}
+.thanks h2{font-size:2.2rem}
+table{border-collapse:collapse;width:100%;background:var(--surface)}
+td,th{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left}
+td.r{text-align:right;font-variant-numeric:tabular-nums}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.closed{margin-top:28px}
+</style>
+</head>
+<body>
+<!-- Netlify Forms läser det här dolda formuläret när sidan publiceras. Ändra inte fältnamnen. -->
+<form name="anmalan" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="namn"><input name="epost"><input name="telefon">
+  <input name="m01"><input name="m02"><input name="m03"><input name="m04"><input name="m05"><input name="m06"><input name="m07"><input name="m08"><input name="m09"><input name="m10">
+  <input name="m11"><input name="m12"><input name="m13"><input name="m14"><input name="m15"><input name="m16"><input name="m17"><input name="m18"><input name="m19"><input name="m20">
+  <input name="m21"><input name="m22"><input name="m23"><input name="m24"><input name="m25"><input name="m26"><input name="m27"><input name="m28"><input name="m29"><input name="m30">
+  <input name="matchlista">
+  <input name="malskytt_back"><input name="malskytt_mittfaltare"><input name="malskytt_anfallare"><input name="malskytt_allsvenskan">
+  <input name="fraga1"><input name="fraga2"><input name="fraga3"><input name="fraga4"><input name="fraga5">
+  <input name="tabell01"><input name="tabell02"><input name="tabell03"><input name="tabell04"><input name="tabell05"><input name="tabell06"><input name="tabell07"><input name="tabell08">
+  <input name="tabell09"><input name="tabell10"><input name="tabell11"><input name="tabell12"><input name="tabell13"><input name="tabell14"><input name="tabell15"><input name="tabell16">
+</form>
+
+<header class="hero"><div class="plate"><h1 id="title">Bajentipset</h1><p id="sub"></p></div></header>
+<main id="app"></main>
+
+<script>
+(function(){
+"use strict";
+const C = window.CONFIG;
+const app = document.getElementById("app");
+const pad = n => String(n).padStart(2,"0");
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+document.getElementById("title").textContent = `Bajentipset ${C.season}`;
+document.title = `Anmälan till Bajentipset ${C.season}`;
+
+const fixtures = (C.fixtures && C.fixtures.length ? C.fixtures.map(f => f.split("-").map(s => s.trim())) :
+  C.teams.filter(t => t !== "Hammarby").sort((a,b) => a.localeCompare(b,"sv")).flatMap(t => [["Hammarby",t],[t,"Hammarby"]]));
+const byRound = !!(C.fixtures && C.fixtures.length);
+
+const deadlineDate = C.deadline ? new Date(C.deadline + "T23:59:59") : null;
+const fmt = d => d.toLocaleDateString("sv-SE",{day:"numeric",month:"long",year:"numeric"});
+document.getElementById("sub").textContent = deadlineDate ? `Anmäl dig och lämna dina tips senast ${fmt(deadlineDate)}.` : "Anmäl dig och lämna dina tips för hela säsongen.";
+
+if (deadlineDate && new Date() > deadlineDate){
+  app.innerHTML = `<div class="closed box"><h2>Anmälan är stängd</h2><p>Sista dagen att lämna tips var ${esc(fmt(deadlineDate))}.</p></div>`;
+  return;
+}
+
+const st = { scores: fixtures.map(() => ["",""]), table: [] };
+const cats = [["back","Back","3 poäng per mål"],["mittfaltare","Mittfältare","2 poäng per mål"],["anfallare","Anfallare","1 poäng per mål"],["allsvenskan","Spelare i ett annat allsvenskt lag","1 poäng per mål"]];
+const fx = f => f.map(t => t === "Hammarby" ? `<b>${esc(t)}</b>` : esc(t)).join(" – ");
+
+app.innerHTML = `
+<form id="f" novalidate>
+<section id="s-kontakt"><h2><span class="n">1</span>Om dig</h2>
+  <p class="lead">Namnet syns i ställningen. E-post och telefon används bara för att nå dig om tävlingen.</p>
+  <div class="box">
+    <label class="f" id="w-namn"><span>Namn</span><input class="t" name="namn" autocomplete="name" required></label>
+    <label class="f" id="w-epost"><span>E-post</span><input class="t" name="epost" type="email" autocomplete="email" required></label>
+    <label class="f" style="margin-bottom:0"><span>Telefon <small>(frivilligt)</small></span><input class="t" name="telefon" type="tel" autocomplete="tel"></label>
+    ${C.fee ? `<div class="fee">${esc(C.fee)}</div>` : ""}
+  </div>
+</section>
+
+<section id="s-matcher"><h2><span class="n">2</span>Hammarbys matcher</h2>
+  <p class="lead">Tippa slutresultatet i alla 30 matcherna, hemmalagets mål först. Exakt rätt ger 3 poäng och rätt utgång ger 1 poäng.${byRound ? "" : " Hammarby möter varje lag en gång hemma och en gång borta."}</p>
+  <div class="matches">${fixtures.map((f,i) => `<div class="m" id="m-${i}"><span class="r">${byRound ? i+1 : ""}</span><span class="lbl">${fx(f)}</span>
+    <span class="sc"><input class="g" inputmode="numeric" maxlength="2" data-i="${i}" data-s="0" aria-label="${esc(f[0])} mål"><span aria-hidden="true">–</span><input class="g" inputmode="numeric" maxlength="2" data-i="${i}" data-s="1" aria-label="${esc(f[1])} mål"></span></div>`).join("")}</div>
+</section>
+
+<section id="s-malskyttar"><h2><span class="n">3</span>Målskyttar</h2>
+  <p class="lead">Välj en back, en mittfältare och en anfallare i Hammarby och en spelare i ett annat allsvenskt lag. Du kan skriva vilket namn som helst.</p>
+  <div class="box">${cats.map(([k,l,h]) => `<label class="f" id="w-${k}"><span>${esc(l)} <small>${esc(h)}</small></span><input class="t" name="malskytt_${k}" list="dl-${k}" autocomplete="off"><datalist id="dl-${k}">${(C.suggestions[k]||[]).map(n => `<option value="${esc(n)}">`).join("")}</datalist></label>`).join("")}</div>
+</section>
+
+<section id="s-fragor"><h2><span class="n">4</span>Fem frågor</h2>
+  <p class="lead">Varje rätt svar ger 5 poäng. Svara med en siffra.</p>
+  <div class="box">${C.questions.map((q,i) => `<label class="q" id="w-q${i}"><span>${i+1}. ${esc(q)}</span><input class="t" name="fraga${i+1}" inputmode="numeric" maxlength="2"></label>`).join("")}</div>
+</section>
+
+<section id="s-tabell"><h2><span class="n">5</span>Allsvenskans sluttabell</h2>
+  <p class="lead">Tryck på lagen i den ordning du tror att de slutar, ettan först. Ändra ordningen med pilarna. Rätt etta ger 4 poäng, rätt tvåa 3, rätt lag på plats 3–4 ger 2, på plats 5–13 ger 1, rätt fjortonde ger 3 och rätt lag på plats 15–16 ger 2.</p>
+  <div class="rank"><div><h3>Lag kvar att placera</h3><div class="pool" id="pool"></div></div><div class="placed"><h3>Din tabell</h3><ol id="placed"></ol></div></div>
+</section>
+<div id="errors"></div>
+</form>`;
+
+const bar = document.createElement("div"); bar.className = "bar";
+bar.innerHTML = `<div class="in"><span class="prog" id="prog"></span><button class="btn" id="send" type="button">Skicka in mina tips</button></div>`;
+document.body.appendChild(bar);
+const f = document.getElementById("f");
+
+function renderTable(){
+  const pool = C.teams.filter(t => !st.table.includes(t)).sort((a,b) => a.localeCompare(b,"sv"));
+  document.getElementById("pool").innerHTML = pool.length ? pool.map(t => `<button type="button" data-add="${esc(t)}">${esc(t)}</button>`).join("") : `<span class="empty">Alla lag är placerade.</span>`;
+  document.getElementById("placed").innerHTML = st.table.length ? st.table.map((t,i) => `<li class="${i<2?'z'+(i+1):''}"><span class="p">${i+1}</span><span>${esc(t)}</span><span>
+    <button type="button" class="ic" data-up="${i}" aria-label="Flytta ${esc(t)} upp"${i===0?" disabled":""}>↑</button><button type="button" class="ic" data-down="${i}" aria-label="Flytta ${esc(t)} ned"${i===st.table.length-1?" disabled":""}>↓</button><button type="button" class="ic" data-rm="${i}" aria-label="Ta bort ${esc(t)}">×</button></span></li>`).join("") : `<li class="empty" style="display:block">Inga lag placerade än.</li>`;
+  progress();
+}
+const validScore = v => /^\d{1,2}$/.test(v);
+function counts(){
+  const fd = new FormData(f);
+  return {
+    m: st.scores.filter(s => validScore(s[0]) && validScore(s[1])).length,
+    s: cats.filter(([k]) => (fd.get("malskytt_"+k)||"").trim()).length,
+    q: C.questions.filter((_,i) => /^\d{1,2}$/.test((fd.get("fraga"+(i+1))||"").trim())).length,
+    t: st.table.length
+  };
+}
+function progress(){
+  const c = counts();
+  document.getElementById("prog").innerHTML = `Matcher <b>${c.m}/${fixtures.length}</b>, målskyttar <b>${c.s}/4</b>, frågor <b>${c.q}/${C.questions.length}</b>, tabell <b>${c.t}/${C.teams.length}</b>`;
+}
+
+renderTable();
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.add){ st.table.push(b.dataset.add); renderTable(); const nb = document.querySelector("#pool button"); if (nb) nb.focus(); }
+  else if (b.dataset.up !== undefined){ const i = +b.dataset.up; [st.table[i-1],st.table[i]] = [st.table[i],st.table[i-1]]; renderTable(); focusAt("up", i-1); }
+  else if (b.dataset.down !== undefined){ const i = +b.dataset.down; [st.table[i+1],st.table[i]] = [st.table[i],st.table[i+1]]; renderTable(); focusAt("down", i+1); }
+  else if (b.dataset.rm !== undefined){ st.table.splice(+b.dataset.rm,1); renderTable(); }
+  else if (b.id === "send") submit();
+});
+function focusAt(kind, i){ const el = document.querySelector(`[data-${kind}="${i}"]:not([disabled])`) || document.querySelector(`[data-up="${i}"],[data-down="${i}"]`); if (el) el.focus(); }
+
+f.addEventListener("input", e => {
+  const t = e.target;
+  if (t.classList.contains("g")){
+    t.value = t.value.replace(/\D/g,"");
+    const i = +t.dataset.i; st.scores[i][+t.dataset.s] = t.value;
+    const row = document.getElementById("m-"+i);
+    row.classList.toggle("done", validScore(st.scores[i][0]) && validScore(st.scores[i][1]));
+    row.classList.remove("err");
+    if (t.value.length === 1){ const all = [...f.querySelectorAll("input.g")]; const nx = all[all.indexOf(t)+1]; if (nx) nx.focus(); }
+  } else {
+    const w = t.closest(".err"); if (w) w.classList.remove("err");
+  }
+  progress();
+});
+f.addEventListener("submit", e => { e.preventDefault(); submit(); });
+
+function submit(){
+  const fd = new FormData(f);
+  const errs = [];
+  const mark = (id, txt) => { const el = document.getElementById(id); if (el) el.classList.add("err"); errs.push([id, txt]); };
+  if (!(fd.get("namn")||"").trim()) mark("w-namn","Skriv ditt namn.");
+  if (!/^\S+@\S+\.\S+$/.test((fd.get("epost")||"").trim())) mark("w-epost","Skriv en giltig e-postadress.");
+  const miss = st.scores.map((s,i) => validScore(s[0]) && validScore(s[1]) ? -1 : i).filter(i => i >= 0);
+  miss.forEach(i => document.getElementById("m-"+i).classList.add("err"));
+  if (miss.length) errs.push(["m-"+miss[0], `${miss.length} ${miss.length===1?"match saknar":"matcher saknar"} resultat.`]);
+  cats.forEach(([k,l]) => { if (!(fd.get("malskytt_"+k)||"").trim()) mark("w-"+k, `Välj ${l.toLowerCase()}.`); });
+  C.questions.forEach((_,i) => { if (!/^\d{1,2}$/.test((fd.get("fraga"+(i+1))||"").trim())) mark("w-q"+i, `Svara på fråga ${i+1} med en siffra.`); });
+  if (st.table.length !== C.teams.length) errs.push(["s-tabell", `Placera alla ${C.teams.length} lag i tabellen (${st.table.length} placerade).`]);
+  const box = document.getElementById("errors");
+  if (errs.length){
+    box.innerHTML = `<div class="errors" role="alert"><b>Det saknas några saker:</b><ul>${errs.map(([id,t]) => `<li><a href="#${id}">${esc(t)}</a></li>`).join("")}</ul></div>`;
+    document.getElementById(errs[0][0]).scrollIntoView({behavior:"smooth", block:"center"});
+    return;
+  }
+  box.innerHTML = "";
+  const out = new URLSearchParams();
+  out.set("form-name","anmalan");
+  out.set("bot-field","");
+  ["namn","epost","telefon"].forEach(k => out.set(k, (fd.get(k)||"").trim()));
+  fixtures.forEach((fx,i) => out.set("m"+pad(i+1), `${+st.scores[i][0]}-${+st.scores[i][1]}`));
+  out.set("matchlista", fixtures.map((fx,i) => `m${pad(i+1)}: ${fx[0]}-${fx[1]}`).join("; "));
+  cats.forEach(([k]) => out.set("malskytt_"+k, (fd.get("malskytt_"+k)||"").trim()));
+  C.questions.forEach((_,i) => out.set("fraga"+(i+1), (fd.get("fraga"+(i+1))||"").trim()));
+  st.table.forEach((t,i) => out.set("tabell"+pad(i+1), t));
+  const btn = document.getElementById("send"); btn.disabled = true; btn.textContent = "Skickar…";
+  fetch("/", {method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body: out.toString()})
+    .then(r => { if (!r.ok) throw new Error(r.status); thanks(out); })
+    .catch(() => { btn.disabled = false; btn.textContent = "Skicka in mina tips";
+      box.innerHTML = `<div class="errors" role="alert"><b>Det gick inte att skicka.</b> Kontrollera att du är uppkopplad och försök igen. Dina tips finns kvar på sidan.</div>`; box.scrollIntoView({block:"center"}); });
+}
+
+function thanks(out){
+  bar.remove();
+  const g = k => esc(out.get(k));
+  app.innerHTML = `<div class="thanks"><h2>Tack, ${g("namn")}!</h2><p class="lead">Dina tips är inskickade. Ta gärna en skärmdump av sammanställningen nedan.</p>
+  <h3>Matcher</h3><div style="overflow-x:auto"><table><tbody>${fixtures.map((fx2,i) => `<tr><td>${fx(fx2)}</td><td class="r"><b>${g("m"+pad(i+1))}</b></td></tr>`).join("")}</tbody></table></div>
+  <div class="cols"><div><h3>Målskyttar</h3><table><tbody>${cats.map(([k,l]) => `<tr><td>${esc(l)}</td><td><b>${g("malskytt_"+k)}</b></td></tr>`).join("")}</tbody></table>
+  <h3>Frågor</h3><table><tbody>${C.questions.map((q,i) => `<tr><td>${esc(q)}</td><td class="r"><b>${g("fraga"+(i+1))}</b></td></tr>`).join("")}</tbody></table></div>
+  <div><h3>Tabell</h3><table><tbody>${st.table.map((t,i) => `<tr><td class="r">${i+1}</td><td>${esc(t)}</td></tr>`).join("")}</tbody></table></div></div></div>`;
+  window.scrollTo(0,0);
+}
+})();
+</script>
+</body>
+</html>

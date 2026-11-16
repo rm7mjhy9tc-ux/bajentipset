@@ -128,6 +128,8 @@ let S = JSON.parse(DATA_EL.textContent);
 let draft = null, dirty = false, canAdmin = false, artifactNs = null, saving = false, msg = "";
 const STANDALONE = !(window.claude && typeof window.claude.use === "function");
 if (STANDALONE && location.hash === "#admin") canAdmin = true;
+let api = false, pw = "";
+try { pw = sessionStorage.getItem("bt-pw") || ""; } catch(_) {}
 const MULT = {Backar:3, "Mittfältare":2, Anfallare:1, Allsvenskan:1};
 const CATNAME = {Backar:"Back", "Mittfältare":"Mittfältare", Anfallare:"Anfallare", Allsvenskan:"Allsvensk spelare"};
 const BANDS = [[1,1,4],[2,2,3],[3,4,2],[5,13,1],[14,14,3],[15,16,2]];
@@ -320,15 +322,16 @@ function vAdmin(){
   const counts = {}; ft.forEach(t => { if (t) counts[t] = (counts[t]||0)+1; });
   const table = ft.map((t,i) => `<label><span class="num muted">${i+1}</span><select data-pos="${i}" class="${t && counts[t]>1 ? 'bad' : ''}"><option value="">Välj lag</option>${D.teams.map(x => `<option${x===t?' selected':''}>${esc(x)}</option>`).join("")}</select></label>`).join("");
   return `<div class="admin"><h2>Uppdatera</h2>
-   <p class="intro">Fyll bara i det som händer. Poäng, ställning och placeringar räknas ut av sidan. ${STANDALONE ? "När du är klar trycker du på Ladda ner. Du får då en ny index.html som du publicerar på Netlify." : "Inget sparas förrän du trycker på Spara."}</p>
+   <p class="intro">Fyll bara i det som händer. Poäng, ställning och placeringar räknas ut av sidan. ${STANDALONE && !api ? "När du är klar trycker du på Ladda ner. Du får då en ny index.html som du publicerar på Netlify." : "Inget sparas förrän du trycker på Spara."}</p>
    <h3>Matchresultat</h3><p class="muted" style="margin-top:0">Skriv som hemmalag–bortalag, till exempel 2-1.</p><div class="agrid">${matches}</div>
    <h3>Målskyttar</h3>${goals}
    <h3>Fråga 5</h3><label>${esc(QTEXT[4])} <input class="q5" type="number" min="1" max="30" data-q5="1" value="${D.qAnswer5 ?? ""}" style="width:5rem"></label>
    <p class="muted">Frågorna 1–4 räknas ut automatiskt från matchresultaten.</p>
    <h3>Allsvenskans sluttabell</h3><p class="muted" style="margin-top:0">Fyll i alla 16 platser när säsongen är slut.</p><div class="tgrid">${table}</div>
    <div class="savebar"><span id="savemsg">${esc(msg || (dirty ? "Du har ändringar som inte är sparade." : "Inga ändringar."))}</span>
+    ${STANDALONE && api ? `<input type="password" data-pw="1" placeholder="Lösenord" autocomplete="current-password" aria-label="Lösenord" value="${esc(pw)}" style="padding:9px 10px;border:1px solid #6E9A7E;background:transparent;color:#fff;width:10rem">` : ""}
     <button class="btn ghost" data-undo="1"${dirty&&!saving?"":" disabled"}>Ångra ändringar</button>
-    <button class="btn" data-save="1"${dirty&&!saving?"":" disabled"}>${saving?"Sparar…":(STANDALONE?"Ladda ner uppdaterad sida":"Spara")}</button></div></div>`;
+    <button class="btn" data-save="1"${dirty&&!saving?"":" disabled"}>${saving?"Sparar…":(STANDALONE&&!api?"Ladda ner uppdaterad sida":"Spara")}</button></div></div>`;
 }
 function touch(){ dirty = true; msg = ""; const m = document.getElementById("savemsg"); if (m) m.textContent = "Du har ändringar som inte är sparade."; document.querySelectorAll("[data-save],[data-undo]").forEach(b => b.disabled = saving); }
 function normScore(v){ v = v.trim().replace(/[–—.,:\s]+/g, "-"); return v; }
@@ -345,6 +348,19 @@ async function save(){
   D.results = D.results.map(r => parse(r) ? r : "");
   if (D.finalTable && !D.finalTable.some(Boolean)) D.finalTable = [];
   const t = new Date(); D.updated = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`;
+  if (STANDALONE && api){
+    if (!pw){ msg = "Skriv lösenordet först."; render(); const i = app.querySelector("[data-pw]"); if (i) i.focus(); return; }
+    saving = true; msg = "Sparar…"; render();
+    try {
+      const r = await fetch("/api/tips", {method:"POST", headers:{"Content-Type":"application/json","x-admin-password":pw}, body: JSON.stringify(D)});
+      saving = false;
+      if (r.status === 401){ pw = ""; try { sessionStorage.removeItem("bt-pw"); } catch(_) {} msg = "Fel lösenord. Försök igen."; render(); return; }
+      if (!r.ok) throw new Error(r.status);
+      try { sessionStorage.setItem("bt-pw", pw); } catch(_) {}
+      S = D; draft = null; dirty = false; msg = "Sparat. Alla ser nu den nya ställningen."; render();
+    } catch(e){ saving = false; msg = "Det gick inte att spara just nu. Försök igen om en stund."; render(); }
+    return;
+  }
   if (STANDALONE){
     const url = URL.createObjectURL(new Blob([buildHtml(D)], {type:"text/html"}));
     const a = document.createElement("a"); a.href = url; a.download = "index.html"; document.body.appendChild(a); a.click(); a.remove();
@@ -374,6 +390,7 @@ app.addEventListener("click", e => {
   if (t.dataset.undo){ draft = null; dirty = false; msg = ""; render(); return; }
   if (t.dataset.save) save();
 });
+app.addEventListener("input", e => { if (e.target.dataset.pw) pw = e.target.value; });
 app.addEventListener("change", e => {
   const t = e.target;
   if (t.dataset.res !== undefined){ const v = normScore(t.value); t.value = v; draft.results[+t.dataset.res] = v; t.classList.toggle("bad", !!v && !parse(v)); touch(); }
@@ -390,6 +407,13 @@ window.addEventListener("hashchange", () => { openPerson = null; render(); windo
 window.addEventListener("beforeunload", e => { if (dirty && !saving){ e.preventDefault(); e.returnValue = ""; } });
 
 render();
+if (STANDALONE && location.protocol.startsWith("http")){
+  fetch("/api/tips", {cache:"no-store"}).then(async r => {
+    if (r.status === 200 && (r.headers.get("content-type")||"").includes("json")){ S = await r.json(); api = true; }
+    else if (r.status === 204) api = true;
+    if (api && !dirty){ draft = null; render(); }
+  }).catch(() => {});
+}
 (async () => {
   try {
     if (!window.claude || typeof window.claude.use !== "function") return;
