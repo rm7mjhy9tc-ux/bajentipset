@@ -329,7 +329,7 @@ function vAdmin(){
    <p class="muted">Frågorna 1–4 räknas ut automatiskt från matchresultaten.</p>
    <h3>Allsvenskans sluttabell</h3><p class="muted" style="margin-top:0">Fyll i alla 16 platser när säsongen är slut.</p><div class="tgrid">${table}</div>
    <div class="savebar"><span id="savemsg">${esc(msg || (dirty ? "Du har ändringar som inte är sparade." : "Inga ändringar."))}</span>
-    ${STANDALONE && api ? `<input type="password" data-pw="1" placeholder="Lösenord" autocomplete="current-password" aria-label="Lösenord" value="${esc(pw)}" style="padding:9px 10px;border:1px solid #6E9A7E;background:transparent;color:#fff;width:10rem">` : ""}
+    ${STANDALONE && api ? `<form data-pwform="1" style="display:contents"><input type="text" name="username" autocomplete="username" value="Bajentipset admin" readonly tabindex="-1" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"><input type="password" name="password" data-pw="1" placeholder="Lösenord" autocomplete="current-password" aria-label="Lösenord" value="${esc(pw)}" style="padding:9px 10px;border:1px solid #6E9A7E;background:transparent;color:#fff;width:10rem"></form>` : ""}
     <button class="btn ghost" data-undo="1"${dirty&&!saving?"":" disabled"}>Ångra ändringar</button>
     <button class="btn" data-save="1"${dirty&&!saving?"":" disabled"}>${saving?"Sparar…":(STANDALONE&&!api?"Ladda ner uppdaterad sida":"Spara")}</button></div></div>`;
 }
@@ -349,6 +349,7 @@ async function save(){
   if (D.finalTable && !D.finalTable.some(Boolean)) D.finalTable = [];
   const t = new Date(); D.updated = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`;
   if (STANDALONE && api){
+    const pwEl = app.querySelector("[data-pw]"); if (pwEl && pwEl.value) pw = pwEl.value;
     if (!pw){ msg = "Skriv lösenordet först."; render(); const i = app.querySelector("[data-pw]"); if (i) i.focus(); return; }
     saving = true; msg = "Sparar…"; render();
     try {
@@ -391,6 +392,7 @@ app.addEventListener("click", e => {
   if (t.dataset.save) save();
 });
 app.addEventListener("input", e => { if (e.target.dataset.pw) pw = e.target.value; });
+app.addEventListener("submit", e => { if (e.target.dataset.pwform){ e.preventDefault(); if (dirty) save(); } });
 app.addEventListener("change", e => {
   const t = e.target;
   if (t.dataset.res !== undefined){ const v = normScore(t.value); t.value = v; draft.results[+t.dataset.res] = v; t.classList.toggle("bad", !!v && !parse(v)); touch(); }
