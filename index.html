@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="sv">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Bajentipset 2026</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"><style id="css">:root{
+  --bg:#F1F5F1;--surface:#FFFFFF;--ink:#13261B;--muted:#56695C;--line:#D3DDD5;
+  --green:#00733A;--green-ink:#FFFFFF;--deep:#0D3321;--soft:#DCEFE2;--soft-ink:#0D4A28;
+  --warn:#9A3B12;--warn-bg:#FBE9DF;--stripe-a:#00733A;--stripe-b:#FFFFFF;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1912;--surface:#15241A;--ink:#E6EFE8;--muted:#9AB1A1;--line:#2A3D30;
+  --green:#3DBE72;--green-ink:#06210F;--deep:#0A2416;--soft:#1D3B28;--soft-ink:#BFEAD0;
+  --warn:#FFB38A;--warn-bg:#3A2117;--stripe-a:#1E8C4E;--stripe-b:#D9E6DC;color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0E1912;--surface:#15241A;--ink:#E6EFE8;--muted:#9AB1A1;--line:#2A3D30;
+  --green:#3DBE72;--green-ink:#06210F;--deep:#0A2416;--soft:#1D3B28;--soft-ink:#BFEAD0;
+  --warn:#FFB38A;--warn-bg:#3A2117;--stripe-a:#1E8C4E;--stripe-b:#D9E6DC;color-scheme:dark;}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Barlow",system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,.num{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif}
+.num{font-variant-numeric:tabular-nums}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.hero{background:repeating-linear-gradient(90deg,var(--stripe-a) 0 34px,var(--stripe-b) 34px 68px);padding:40px 16px 0}
+.plate{max-width:960px;margin:0 auto;background:var(--deep);color:#fff;padding:18px 22px 16px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 28px}
+.plate h1{margin:0;font-size:clamp(2.4rem,7vw,3.6rem);line-height:.95;font-weight:700;letter-spacing:.01em}
+.plate p{margin:0;color:#BFD8C8;font-size:.95rem}
+.plate .lead{margin-left:auto;text-align:right}
+.plate .lead b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:1.5rem;color:#fff;font-weight:600;line-height:1.1}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav .in{max-width:960px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;padding:0 8px}
+nav a{flex:none;padding:14px 12px 12px;color:var(--muted);text-decoration:none;font-weight:600;border-bottom:3px solid transparent}
+nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--green)}
+main{max-width:960px;margin:0 auto;padding:20px 16px 64px}
+h2{font-size:1.9rem;margin:8px 0 4px;font-weight:700}
+h3{font-size:1.3rem;margin:24px 0 8px;font-weight:600}
+.intro{color:var(--muted);margin:0 0 18px;max-width:62ch}
+.board{background:var(--surface);border:1px solid var(--line)}
+.row{display:grid;grid-template-columns:3.2rem 1fr repeat(4,4.4rem) 4.8rem;align-items:center;gap:0 6px;padding:10px 14px;border-top:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left;cursor:pointer}
+.row:first-child{border-top:0}
+.row.head{cursor:default;color:var(--muted);font-size:.85rem;padding-top:12px;padding-bottom:8px}
+button.row:hover{background:var(--soft)}
+.row .rk{font-family:"Barlow Condensed",sans-serif;font-size:1.5rem;font-weight:600;color:var(--muted)}
+:root{--gold:#B8860B;--silver:#6F7C88;--bronze:#A35A22}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--gold:#E8C14E;--silver:#C5CED6;--bronze:#DE9A5F}}
+:root[data-theme="dark"]{--gold:#E8C14E;--silver:#C5CED6;--bronze:#DE9A5F}
+.row.m1{--medal:var(--gold)}.row.m2{--medal:var(--silver)}.row.m3{--medal:var(--bronze)}
+.row.m1,.row.m2,.row.m3{box-shadow:inset 5px 0 0 var(--medal)}
+.row.m1 .rk,.row.m2 .rk,.row.m3 .rk,.row.m1 .tot,.row.m2 .tot,.row.m3 .tot{color:var(--medal)}
+.row .nm{font-weight:600}
+.row .sub{display:none;color:var(--muted);font-size:.85rem;font-weight:400}
+.row .c{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.row .tot{text-align:right;font-family:"Barlow Condensed",sans-serif;font-size:1.6rem;font-weight:700}
+@media (max-width:640px){.row{grid-template-columns:2.6rem 1fr 3.6rem}.row .c{display:none}.row .sub{display:block}}
+.card{background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px}
+.match{display:grid;grid-template-columns:2.6rem 1fr auto;gap:4px 12px;align-items:center;width:100%;background:var(--surface);border:1px solid var(--line);border-top:0;padding:10px 14px;text-align:left;cursor:pointer}
+.match:first-child{border-top:1px solid var(--line)}
+.match:hover{background:var(--soft)}
+.match .r{font-family:"Barlow Condensed",sans-serif;color:var(--muted);font-size:1.1rem}
+.match .s{font-family:"Barlow Condensed",sans-serif;font-size:1.5rem;font-weight:700;min-width:3.2rem;text-align:right}
+.match .s.none{color:var(--muted);font-weight:400;font-size:1rem}
+.match .meta{grid-column:2/4;color:var(--muted);font-size:.85rem}
+.home{font-weight:700}
+.detail{background:var(--surface);border:1px solid var(--line);border-top:0;padding:4px 14px 14px}
+.grp{margin-top:10px}
+.grp h4{margin:0 0 6px;font-size:.95rem;color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;gap:6px;align-items:baseline;padding:3px 9px;border:1px solid var(--line);font-size:.9rem;background:var(--bg)}
+.chip b{font-variant-numeric:tabular-nums}
+.chip.p3{background:var(--green);color:var(--green-ink);border-color:var(--green)}
+.chip.p1{background:var(--soft);color:var(--soft-ink);border-color:transparent}
+.pt{display:inline-block;min-width:2.1rem;text-align:center;padding:1px 6px;font-weight:700;font-variant-numeric:tabular-nums}
+.pt.p3,.pt.p5,.pt.p4{background:var(--green);color:var(--green-ink)}
+.pt.p1,.pt.p2{background:var(--soft);color:var(--soft-ink)}
+.pt.p0{color:var(--muted)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;background:var(--surface);font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+td.r,th.r{text-align:right}
+.panel{position:fixed;inset:0;z-index:20;display:flex;justify-content:flex-end;background:rgba(5,20,10,.45)}
+.panel .sheet{width:min(640px,100%);height:100%;overflow-y:auto;background:var(--bg);padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 40px)}
+.sheet .top{display:flex;align-items:flex-start;gap:12px}
+.sheet .top h2{flex:1}
+.x{border:1px solid var(--line);background:var(--surface);padding:6px 12px;cursor:pointer}
+.sum{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:8px 0 6px}
+.sum div{background:var(--surface);border:1px solid var(--line);padding:8px 10px}
+.sum span{display:block;color:var(--muted);font-size:.8rem}
+.sum b{font-family:"Barlow Condensed",sans-serif;font-size:1.5rem}
+.sum div.t{background:var(--deep);color:#fff;border-color:var(--deep)}
+.sum div.t span{color:#BFD8C8}
+@media (max-width:520px){.sum{grid-template-columns:repeat(2,1fr)}.sum div.t{grid-column:1/-1}}
+.rules p{max-width:64ch}
+.rules table{max-width:520px}
+.note{background:var(--warn-bg);color:var(--warn);padding:10px 14px;margin:0 0 14px}
+.admin label{display:block}
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:6px}
+.arow{display:grid;grid-template-columns:2.2rem 1fr 4.6rem;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);padding:6px 10px}
+.arow .f{font-size:.9rem}
+input.sc{width:100%;padding:6px 8px;border:1px solid var(--line);background:var(--bg);text-align:center;font-variant-numeric:tabular-nums}
+input.sc.bad{border-color:var(--warn);background:var(--warn-bg)}
+.goal{display:grid;grid-template-columns:1fr auto 2.4rem auto;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);padding:6px 10px}
+.goal small{color:var(--muted);display:block}
+.step{width:2.2rem;height:2.2rem;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-weight:700}
+.goal output{text-align:center;font-family:"Barlow Condensed",sans-serif;font-size:1.3rem}
+select,input.q5{padding:6px 8px;border:1px solid var(--line);background:var(--bg)}
+select.bad{border-color:var(--warn);background:var(--warn-bg)}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+.tgrid label{display:grid;grid-template-columns:2rem 1fr;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);padding:5px 8px}
+.savebar{position:sticky;bottom:0;margin-top:20px;background:var(--deep);color:#fff;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.savebar span{flex:1;min-width:180px}
+.btn{background:var(--green);color:var(--green-ink);border:0;padding:10px 18px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:#fff;border:1px solid #6E9A7E}
+.btn[disabled]{opacity:.5;cursor:default}
+.muted{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.panel .sheet{animation:in .18s ease-out}@keyframes in{from{transform:translateX(24px);opacity:.6}}}
+@media (max-width:640px){.plate .lead{margin-left:0;text-align:left}.hero{padding-top:28px}}
+</style></head>
+<body><div id="app"></div>
+<script id="data" type="application/json">{"season":2026,"updated":"2026-11-11","fixtures":[["Hammarby","Mjällby"],["Sirius","Hammarby"],["Hammarby","Örgryte"],["Hammarby","Halmstad"],["Djurgården","Hammarby"],["Hammarby","Västerås"],["IFK Göteborg","Hammarby"],["Hammarby","Malmö FF"],["GAIS","Hammarby"],["Hammarby","AIK"],["Häcken","Hammarby"],["Elfsborg","Hammarby"],["Hammarby","Kalmar"],["Hammarby","Degerfors"],["Brommapojkarna","Hammarby"],["Hammarby","Häcken"],["Kalmar","Hammarby"],["Hammarby","GAIS"],["AIK","Hammarby"],["Örgryte","Hammarby"],["Hammarby","Brommapojkarna"],["Degerfors","Hammarby"],["Hammarby","Djurgården"],["Halmstad","Hammarby"],["Mjällby","Hammarby"],["Hammarby","Sirius"],["Malmö FF","Hammarby"],["Hammarby","Elfsborg"],["Hammarby","IFK Göteborg"],["Västerås","Hammarby"]],"results":["3-0","2-0","8-1","1-1","1-1","3-0","0-1","4-1","2-0","1-2","3-2","1-2","2-0","4-0","1-1","3-0","0-4","2-0","3-2","1-1","3-1","0-1","0-1","0-1","0-2","2-0","1-2","4-1","",""],"players":[{"name":"Hampus Skoglund","club":"Hammarby","cat":"Backar","goals":0},{"name":"Ibrahima Fofana","club":"Hammarby","cat":"Backar","goals":1},{"name":"Noah Persson","club":"Hammarby","cat":"Backar","goals":3},{"name":"Victor Eriksson","club":"Hammarby","cat":"Backar","goals":2},{"name":"Nahir Besara","club":"Hammarby","cat":"Mittfältare","goals":5},{"name":"Oscar Johansson Schellas","club":"Hammarby","cat":"Mittfältare","goals":1},{"name":"Paulos Abraham","club":"Hammarby","cat":"Anfallare","goals":17},{"name":"Victor Lind","club":"Hammarby","cat":"Anfallare","goals":10},{"name":"Nikola Vasic","club":"Hammarby","cat":"Anfallare","goals":3},{"name":"Montader Madjed","club":"Hammarby","cat":"Anfallare","goals":8},{"name":"Elohim Kaboré","club":"Hammarby","cat":"Anfallare","goals":0},{"name":"Erik Botheim","club":"Malmö","cat":"Allsvenskan","goals":10},{"name":"Taha Ali","club":"Malmö","cat":"Allsvenskan","goals":1},{"name":"Arnor Sigurdsson","club":"Malmö","cat":"Allsvenskan","goals":0},{"name":"Elliot Stroud","club":"Mjällby","cat":"Allsvenskan","goals":3},{"name":"Jacob Bergström","club":"Mjällby","cat":"Allsvenskan","goals":10},{"name":"Jeppe Kjaer Jensen","club":"Mjällby","cat":"Allsvenskan","goals":3},{"name":"Max Fenger","club":"Göteborg","cat":"Allsvenskan","goals":0},{"name":"Odera Samuel Adindu","club":"Sirius","cat":"Allsvenskan","goals":1},{"name":"Robbie Ure","club":"Sirius","cat":"Allsvenskan","goals":15},{"name":"Kristian Lien","club":"dif","cat":"Allsvenskan","goals":17}],"qAnswer5":null,"finalTable":[],"participants":[{"name":"Anders Wåhrberg","tips":["2-1","1-2","3-0","1-0","0-2","4-1","1-1","1-2","1-1","1-1","3-1","2-0","3-0","2-0","1-3","1-1","1-1","0-0","0-3","1-2","4-1","1-3","1-1","1-1","3-1","2-2","2-2","2-1","2-3","0-4"],"scorers":["Noah Persson","Nahir Besara","Nikola Vasic","Erik Botheim"],"q":[3,3,4,4,30],"table":["Hammarby","Malmö FF","Djurgården","IFK Göteborg","Häcken","GAIS","Mjällby","Kalmar","Sirius","Elfsborg","Brommapojkarna","Halmstad","Degerfors","Örgryte","AIK","Västerås"]},{"name":"Andreas Woldegiorgis","tips":["2-1","0-2","2-1","3-0","1-3","2-1","1-1","2-2","2-2","4-1","2-2","0-2","5-1","4-0","1-4","3-0","1-1","2-1","0-0","0-1","1-0","0-1","2-0","1-2","1-1","2-0","2-2","3-0","2-1","1-4"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Odera Samuel Adindu"],"q":[3,4,6,4,28],"table":["Hammarby","Malmö FF","Mjällby","GAIS","Sirius","Häcken","IFK Göteborg","Djurgården","Västerås","AIK","Halmstad","Elfsborg","Degerfors","Brommapojkarna","Kalmar","Örgryte"]},{"name":"Arvid Brikell","tips":["1-2","2-2","3-0","3-0","1-1","3-0","1-2","2-0","1-0","3-2","1-2","0-2","4-1","4-0","0-3","3-1","1-3","1-1","1-0","0-3","3-0","0-2","2-0","2-1","2-0","3-1","1-1","2-0","2-0","0-3"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[5,4,3,4,29],"table":["Mjällby","Hammarby","Djurgården","GAIS","Malmö FF","Sirius","AIK","IFK Göteborg","Elfsborg","Brommapojkarna","Häcken","Degerfors","Kalmar","Halmstad","Västerås","Örgryte"]},{"name":"Bert Dyren","tips":["2-1","1-1","2-0","3-0","1-2","1-1","1-1","2-0","1-1","2-1","2-1","1-3","2-0","2-0","0-2","2-1","0-2","1-1","1-2","1-2","2-0","0-2","2-1","0-2","1-1","2-1","1-2","2-1","2-0","1-1"],"scorers":["Noah Persson","Nahir Besara","Elohim Kaboré","Robbie Ure"],"q":[4,5,4,6,26],"table":["Hammarby","Mjällby","Malmö FF","GAIS","Sirius","Elfsborg","IFK Göteborg","Djurgården","AIK","Häcken","Kalmar","Örgryte","Brommapojkarna","Degerfors","Västerås","Halmstad"]},{"name":"Christian Lundell","tips":["2-2","1-2","3-0","3-0","0-1","3-0","1-1","2-1","1-1","1-0","1-1","1-1","3-0","3-0","0-2","2-1","1-3","2-1","1-1","0-2","3-1","1-3","1-0","0-2","1-1","3-1","1-1","2-1","2-1","1-3"],"scorers":["Victor Eriksson","Nahir Besara","Paulos Abraham","Jacob Bergström"],"q":[3,4,4,6,29],"table":["Hammarby","Mjällby","Malmö FF","Elfsborg","Degerfors","GAIS","Häcken","Västerås","Brommapojkarna","IFK Göteborg","Sirius","AIK","Djurgården","Kalmar","Halmstad","Örgryte"]},{"name":"Eddie Johansson","tips":["2-2","0-2","3-0","3-0","1-2","2-0","1-2","3-1","1-1","2-0","1-2","1-2","3-0","3-0","1-2","2-1","1-2","2-1","1-2","0-2","2-0","1-2","3-1","1-2","1-1","3-1","1-1","2-1","2-1","1-2"],"scorers":["Noah Persson","Nahir Besara","Montader Madjed","Elliot Stroud"],"q":[3,4,6,6,29],"table":["Hammarby","Mjällby","GAIS","IFK Göteborg","Häcken","Elfsborg","Sirius","Brommapojkarna","Degerfors","Kalmar","Malmö FF","AIK","Djurgården","Halmstad","Västerås","Örgryte"]},{"name":"Frederik Johansson","tips":["2-0","2-2","4-1","2-0","2-2","3-0","1-2","2-1","2-2","3-1","2-1","1-4","5-0","3-0","1-3","2-1","0-3","3-1","0-2","1-5","4-0","1-3","3-2","1-2","1-1","3-2","1-3","4-0","3-1","1-5"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Erik Botheim"],"q":[3,4,6,4,30],"table":["Hammarby","Mjällby","Häcken","Djurgården","Malmö FF","GAIS","IFK Göteborg","Sirius","AIK","Brommapojkarna","Elfsborg","Västerås","Halmstad","Degerfors","Örgryte","Kalmar"]},{"name":"Hannes Ottosson","tips":["1-1","1-2","3-0","2-0","1-1","5-0","1-3","2-1","1-0","2-0","3-2","0-1","4-0","3-1","1-4","2-0","0-1","2-1","2-2","1-2","4-0","1-1","4-1","1-0","1-1","4-2","2-1","5-1","4-0","1-3"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Erik Botheim"],"q":[3,4,4,4,28],"table":["Hammarby","Malmö FF","Mjällby","Häcken","Sirius","GAIS","Djurgården","AIK","IFK Göteborg","Halmstad","Elfsborg","Brommapojkarna","Degerfors","Örgryte","Västerås","Kalmar"]},{"name":"Hugo Dyrén","tips":["3-2","1-2","5-0","4-1","1-3","3-0","2-2","1-0","1-3","2-0","2-3","1-1","2-0","5-0","1-2","1-0","0-3","2-1","1-1","1-2","3-0","2-3","2-0","1-1","1-3","4-2","2-2","3-0","1-0","0-2"],"scorers":["Victor Eriksson","Nahir Besara","Paulos Abraham","Max Fenger"],"q":[3,3,6,6,28],"table":["Hammarby","IFK Göteborg","Malmö FF","Mjällby","GAIS","Djurgården","Häcken","Sirius","AIK","Elfsborg","Brommapojkarna","Kalmar","Halmstad","Västerås","Örgryte","Degerfors"]},{"name":"Jan Gröning","tips":["4-1","0-2","5-0","3-0","1-2","5-1","1-1","3-1","1-2","2-0","2-3","2-3","2-0","6-0","1-3","3-1","1-2","3-1","1-1","0-4","4-1","0-3","2-1","0-1","1-1","3-0","2-2","4-2","3-2","0-3"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Arnor Sigurdsson"],"q":[3,3,4,6,26],"table":["Hammarby","IFK Göteborg","GAIS","Djurgården","Häcken","Malmö FF","AIK","Sirius","Elfsborg","Halmstad","Brommapojkarna","Mjällby","Kalmar","Västerås","Degerfors","Örgryte"]},{"name":"Jens Brikell","tips":["1-1","1-3","3-0","2-1","1-1","4-1","1-1","2-1","1-1","3-2","2-1","1-3","3-0","4-1","1-3","3-1","1-2","2-2","1-1","0-2","3-1","1-1","3-1","1-1","1-0","3-1","1-0","3-1","2-1","1-3"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[3,4,4,4,29],"table":["Mjällby","Hammarby","Djurgården","Malmö FF","Sirius","GAIS","AIK","IFK Göteborg","Häcken","Elfsborg","Kalmar","Halmstad","Brommapojkarna","Degerfors","Västerås","Örgryte"]},{"name":"Jens Rydell","tips":["1-1","1-1","3-1","4-1","2-2","3-1","1-1","1-0","1-0","2-1","1-1","1-2","2-0","2-0","1-3","2-0","0-1","2-1","1-1","1-2","3-0","1-3","1-0","0-2","3-1","3-1","1-0","2-0","2-1","1-1"],"scorers":["Hampus Skoglund","Nahir Besara","Victor Lind","Robbie Ure"],"q":[3,4,4,4,30],"table":["Hammarby","Malmö FF","Mjällby","Djurgården","GAIS","IFK Göteborg","AIK","Sirius","Elfsborg","Brommapojkarna","Häcken","Halmstad","Degerfors","Örgryte","Kalmar","Västerås"]},{"name":"Jimmy Karlsson","tips":["3-2","2-2","3-0","2-0","1-2","2-1","1-2","3-0","1-1","2-0","1-2","0-1","3-0","4-0","0-2","3-0","1-2","2-1","1-3","1-2","3-1","1-3","3-0","1-2","1-1","2-1","1-3","3-0","2-0","1-2"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[4,4,6,6,29],"table":["Hammarby","Mjällby","Sirius","Malmö FF","Djurgården","GAIS","Häcken","IFK Göteborg","Elfsborg","AIK","Västerås","Brommapojkarna","Kalmar","Halmstad","Degerfors","Örgryte"]},{"name":"Joakim Lönner","tips":["2-1","2-2","3-0","4-1","1-1","3-0","1-1","2-0","1-1","3-1","1-2","1-2","3-0","4-1","1-3","3-1","0-1","2-1","1-2","1-3","2-0","0-2","3-2","0-2","2-2","3-1","1-1","2-1","1-0","1-2"],"scorers":["Noah Persson","Nahir Besara","Victor Lind","Robbie Ure"],"q":[3,4,6,4,29],"table":["Hammarby","GAIS","Mjällby","Malmö FF","Djurgården","IFK Göteborg","Sirius","AIK","Häcken","Elfsborg","Brommapojkarna","Kalmar","Degerfors","Örgryte","Västerås","Halmstad"]},{"name":"Jompa Fransson","tips":["2-0","1-2","3-1","4-1","1-1","3-0","1-2","2-0","1-2","2-0","2-1","2-1","3-0","3-1","2-3","1-0","1-3","2-0","1-1","0-2","4-1","1-4","2-0","2-1","2-1","3-1","1-1","2-1","2-1","1-3"],"scorers":["Victor Eriksson","Nahir Besara","Paulos Abraham","Erik Botheim"],"q":[3,3,4,4,29],"table":["Hammarby","Mjällby","Malmö FF","Djurgården","GAIS","Sirius","AIK","IFK Göteborg","Häcken","Elfsborg","Halmstad","Brommapojkarna","Degerfors","Kalmar","Västerås","Örgryte"]},{"name":"Jonas Lavrell","tips":["3-2","2-2","4-1","3-1","1-2","2-0","1-2","3-0","2-1","3-1","2-2","2-2","5-1","3-0","0-2","3-1","2-1","3-1","2-1","1-2","4-0","1-3","3-1","1-1","2-0","3-0","2-2","3-1","3-0","1-2"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Jacob Bergström"],"q":[3,4,3,6,29],"table":["Hammarby","Mjällby","Sirius","Djurgården","Malmö FF","Häcken","AIK","IFK Göteborg","GAIS","Halmstad","Elfsborg","Brommapojkarna","Degerfors","Kalmar","Örgryte","Västerås"]},{"name":"Jonas Wenell","tips":["2-1","1-1","2-0","3-1","1-1","3-0","1-1","1-1","1-2","2-1","1-2","0-2","3-0","2-1","1-2","2-0","1-2","2-2","1-1","0-2","2-0","1-1","3-1","0-2","2-1","2-0","2-1","2-0","2-1","0-2"],"scorers":["Ibrahima Fofana","Nahir Besara","Montader Madjed","Taha Ali"],"q":[3,4,4,4,29],"table":["Hammarby","Malmö FF","Mjällby","Djurgården","AIK","Sirius","GAIS","IFK Göteborg","Häcken","Elfsborg","Brommapojkarna","Degerfors","Örgryte","Kalmar","Halmstad","Västerås"]},{"name":"Kristian Lagerfeldt","tips":["2-1","1-2","2-1","2-1","1-2","2-1","1-2","2-1","1-2","2-1","1-2","1-2","2-1","2-1","1-2","2-1","1-2","2-1","1-2","1-2","2-1","1-2","2-1","1-2","1-2","2-1","1-2","2-1","2-1","1-2"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[3,3,6,6,28],"table":["Hammarby","Mjällby","Malmö FF","Sirius","GAIS","AIK","Djurgården","IFK Göteborg","Häcken","Halmstad","Brommapojkarna","Degerfors","Elfsborg","Kalmar","Västerås","Örgryte"]},{"name":"Lars Samuelsson","tips":["2-1","1-2","3-0","3-0","1-1","2-0","2-2","2-0","1-2","1-1","0-1","0-0","2-1","3-0","0-2","2-2","1-2","3-1","1-1","0-2","3-2","1-2","2-1","1-2","1-1","2-1","1-1","2-0","3-1","0-2"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[4,5,4,4,30],"table":["Hammarby","Mjällby","Malmö FF","Djurgården","GAIS","IFK Göteborg","Brommapojkarna","Häcken","AIK","Elfsborg","Sirius","Halmstad","Kalmar","Örgryte","Degerfors","Västerås"]},{"name":"Lars-Johan Persson","tips":["2-2","1-3","4-0","4-1","1-3","3-0","1-2","2-1","1-0","2-1","1-2","1-3","4-0","4-2","0-2","2-1","0-2","3-2","1-1","0-3","4-1","0-2","2-0","1-2","2-1","2-1","2-2","3-1","2-1","0-3"],"scorers":["Victor Eriksson","Nahir Besara","Victor Lind","Erik Botheim"],"q":[3,4,4,6,29],"table":["Hammarby","Mjällby","Malmö FF","GAIS","IFK Göteborg","Djurgården","Sirius","Degerfors","Häcken","Brommapojkarna","Elfsborg","Kalmar","AIK","Halmstad","Västerås","Örgryte"]},{"name":"Mats Ottosson","tips":["2-1","2-2","3-0","4-0","1-1","2-0","0-1","2-1","1-2","3-1","2-2","0-2","3-1","2-0","1-3","2-1","0-2","2-1","1-2","0-3","3-0","1-1","3-1","0-1","2-1","2-0","1-1","2-1","2-0","1-2"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Erik Botheim"],"q":[3,4,6,4,29],"table":["Hammarby","Mjällby","GAIS","Malmö FF","Sirius","Djurgården","Häcken","IFK Göteborg","AIK","Elfsborg","Degerfors","Brommapojkarna","Västerås","Halmstad","Örgryte","Kalmar"]},{"name":"Mats Samuelsson","tips":["3-1","1-3","3-1","3-1","1-3","3-1","1-3","3-1","1-3","3-1","1-3","1-3","3-1","3-1","1-3","3-1","1-3","3-1","1-3","1-3","3-1","1-3","3-1","1-3","1-3","3-1","1-3","3-1","3-1","1-3"],"scorers":["Hampus Skoglund","Oscar Johansson Schellas","Montader Madjed","Elliot Stroud"],"q":[3,4,4,4,28],"table":["Hammarby","Malmö FF","Djurgården","Mjällby","GAIS","IFK Göteborg","Häcken","Elfsborg","Sirius","AIK","Örgryte","Brommapojkarna","Kalmar","Degerfors","Västerås","Halmstad"]},{"name":"Morgan Andersson","tips":["2-1","0-4","3-1","4-0","1-2","2-0","1-1","2-2","0-3","2-0","2-2","1-3","3-0","4-1","1-3","3-2","2-3","3-1","0-1","1-2","3-0","1-3","2-1","0-2","1-2","3-0","1-1","2-1","3-1","1-3"],"scorers":["Hampus Skoglund","Nahir Besara","Paulos Abraham","Jeppe Kjaer Jensen"],"q":[3,3,6,6,28],"table":["Hammarby","Malmö FF","Djurgården","Mjällby","AIK","IFK Göteborg","GAIS","Häcken","Örgryte","Elfsborg","Sirius","Kalmar","Halmstad","Brommapojkarna","Degerfors","Västerås"]},{"name":"Nicklas Svaneby","tips":["2-2","1-1","3-0","4-2","0-2","4-0","2-3","3-0","1-3","2-0","2-2","0-3","5-0","2-0","1-3","3-0","0-4","3-2","0-1","1-2","2-0","0-2","2-2","0-3","2-1","2-2","2-2","4-0","3-1","1-2"],"scorers":["Hampus Skoglund","Nahir Besara","Montader Madjed","Elliot Stroud"],"q":[4,5,6,6,30],"table":["Hammarby","Mjällby","Sirius","IFK Göteborg","Djurgården","GAIS","Häcken","Malmö FF","AIK","Brommapojkarna","Halmstad","Västerås","Örgryte","Degerfors","Kalmar","Elfsborg"]},{"name":"Olavi Rizell","tips":["2-1","1-1","3-0","1-0","1-1","3-1","1-2","2-1","0-0","2-0","2-1","1-2","2-0","1-0","0-2","3-1","0-3","1-0","1-1","0-2","2-0","1-2","2-0","1-0","2-1","2-1","1-2","2-0","3-1","0-2"],"scorers":["Noah Persson","Nahir Besara","Victor Lind","Elliot Stroud"],"q":[4,6,3,4,29],"table":["Mjällby","Hammarby","Malmö FF","Sirius","Djurgården","GAIS","IFK Göteborg","AIK","Häcken","Elfsborg","Brommapojkarna","Degerfors","Halmstad","Västerås","Kalmar","Örgryte"]},{"name":"Olle Lönner","tips":["2-0","1-2","3-0","4-0","1-3","4-0","2-3","3-1","2-2","3-1","2-2","1-2","4-2","5-0","0-2","2-0","1-3","3-0","1-1","1-2","3-0","0-2","4-2","1-1","1-2","3-0","2-3","4-1","2-1","0-3"],"scorers":["Victor Eriksson","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[3,3,6,6,29],"table":["Hammarby","Mjällby","Malmö FF","GAIS","Sirius","AIK","Djurgården","IFK Göteborg","Häcken","Elfsborg","Brommapojkarna","Kalmar","Degerfors","Västerås","Halmstad","Örgryte"]},{"name":"Peder Dyren","tips":["2-1","1-3","1-0","2-1","1-2","3-0","1-2","1-0","1-2","1-0","0-1","1-2","3-1","3-1","1-2","1-0","1-2","3-2","0-2","1-2","2-0","0-2","2-1","0-1","0-1","3-1","0-1","2-1","2-1","0-2"],"scorers":["Hampus Skoglund","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[3,4,4,4,28],"table":["Hammarby","Malmö FF","Djurgården","Mjällby","IFK Göteborg","Häcken","AIK","Sirius","Elfsborg","GAIS","Örgryte","Brommapojkarna","Degerfors","Halmstad","Kalmar","Västerås"]},{"name":"Peter Samuelsson","tips":["1-1","3-2","4-0","3-0","1-1","3-0","1-3","4-1","2-1","3-1","2-1","1-3","4-0","5-1","0-3","2-0","1-2","3-1","1-2","0-3","4-2","0-3","3-1","1-1","2-0","2-2","1-1","3-1","3-2","1-4"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[4,6,6,4,28],"table":["Mjällby","Hammarby","Sirius","Malmö FF","Djurgården","GAIS","IFK Göteborg","AIK","Häcken","Elfsborg","Västerås","Kalmar","Brommapojkarna","Halmstad","Degerfors","Örgryte"]},{"name":"Robert Tennisberg","tips":["1-1","2-1","3-0","2-0","0-2","3-1","2-1","0-0","1-0","2-1","2-2","1-2","3-1","3-0","1-2","2-1","1-1","2-1","1-1","0-2","3-2","1-2","3-1","1-1","3-2","2-2","2-0","1-1","2-0","1-2"],"scorers":["Ibrahima Fofana","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[4,4,4,6,29],"table":["Mjällby","Malmö FF","Hammarby","IFK Göteborg","Djurgården","Sirius","GAIS","Häcken","AIK","Elfsborg","Brommapojkarna","Degerfors","Västerås","Kalmar","Halmstad","Örgryte"]},{"name":"Sixten Lagerfeldt","tips":["2-1","1-3","3-0","2-1","1-4","2-0","1-1","2-1","3-1","3-2","2-1","1-2","3-0","4-0","0-2","3-2","1-3","3-2","1-1","0-2","1-0","0-0","3-0","1-1","2-0","2-1","0-0","3-1","4-2","0-2"],"scorers":["Victor Eriksson","Nahir Besara","Montader Madjed","Robbie Ure"],"q":[4,5,4,6,28],"table":["Hammarby","Mjällby","Malmö FF","Djurgården","GAIS","AIK","Sirius","IFK Göteborg","Elfsborg","Häcken","Brommapojkarna","Halmstad","Örgryte","Kalmar","Västerås","Degerfors"]},{"name":"Stefan Bondesson","tips":["1-1","1-2","3-0","2-0","1-3","3-1","1-2","1-1","1-3","2-0","2-2","0-1","3-0","4-0","0-2","2-1","1-3","1-0","1-2","1-2","2-0","1-3","1-0","0-2","1-0","1-1","1-1","2-0","3-0","0-2"],"scorers":["Noah Persson","Nahir Besara","Victor Lind","Kristian Lien"],"q":[3,4,6,6,29],"table":["Hammarby","Malmö FF","Djurgården","Häcken","Mjällby","Sirius","AIK","IFK Göteborg","GAIS","Örgryte","Västerås","Elfsborg","Brommapojkarna","Kalmar","Halmstad","Degerfors"]},{"name":"Thomas Älgekrans","tips":["1-1","2-2","2-0","3-1","1-3","2-1","0-2","0-0","1-2","2-0","1-3","2-3","4-1","2-1","1-3","2-1","0-3","2-0","1-1","1-2","3-0","1-1","1-1","0-1","2-0","1-2","2-2","3-0","2-0","1-4"],"scorers":["Noah Persson","Nahir Besara","Paulos Abraham","Robbie Ure"],"q":[4,6,6,4,29],"table":["Hammarby","Mjällby","Djurgården","Sirius","Malmö FF","GAIS","AIK","Häcken","IFK Göteborg","Elfsborg","Degerfors","Halmstad","Brommapojkarna","Örgryte","Kalmar","Västerås"]},{"name":"Uffe Norberg","tips":["2-1","1-2","2-1","3-0","0-1","2-0","1-2","1-0","1-1","2-0","1-2","0-2","3-0","2-0","1-2","2-1","1-2","1-0","0-1","0-2","3-1","0-1","2-0","0-3","2-1","2-1","1-1","2-0","2-1","0-2"],"scorers":["Victor Eriksson","Nahir Besara","Paulos Abraham","Jacob Bergström"],"q":[3,4,6,6,28],"table":["Hammarby","Mjällby","Malmö FF","GAIS","IFK Göteborg","Sirius","Djurgården","AIK","Häcken","Elfsborg","Brommapojkarna","Degerfors","Västerås","Halmstad","Kalmar","Örgryte"]},{"name":"Ulf Christenson","tips":["2-1","2-3","4-0","4-0","1-3","1-0","0-1","2-0","1-1","1-1","0-2","0-1","4-1","4-1","0-2","1-1","1-2","2-2","1-2","0-3","3-2","1-2","3-0","1-1","1-1","2-1","0-2","2-0","1-1","1-2"],"scorers":["Noah Persson","Nahir Besara","Victor Lind","Jacob Bergström"],"q":[3,3,4,6,30],"table":["Hammarby","Mjällby","Sirius","GAIS","Djurgården","AIK","IFK Göteborg","Häcken","Brommapojkarna","Elfsborg","Malmö FF","Degerfors","Halmstad","Västerås","Kalmar","Örgryte"]}],"teams":["AIK","Brommapojkarna","Degerfors","Djurgården","Elfsborg","GAIS","Halmstad","Hammarby","Häcken","IFK Göteborg","Kalmar","Malmö FF","Mjällby","Sirius","Västerås","Örgryte"]}</script>
+<script id="app-js">(function(){
+"use strict";
+const HEAD = "<meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\"><title>Bajentipset 2026</title><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap\" rel=\"stylesheet\">";
+const DATA_EL = document.getElementById("data");
+let S = JSON.parse(DATA_EL.textContent);
+let draft = null, dirty = false, canAdmin = false, artifactNs = null, saving = false, msg = "";
+const STANDALONE = !(window.claude && typeof window.claude.use === "function");
+if (STANDALONE && location.hash === "#admin") canAdmin = true;
+const MULT = {Backar:3, "Mittfältare":2, Anfallare:1, Allsvenskan:1};
+const CATNAME = {Backar:"Back", "Mittfältare":"Mittfältare", Anfallare:"Anfallare", Allsvenskan:"Allsvensk spelare"};
+const BANDS = [[1,1,4],[2,2,3],[3,4,2],[5,13,1],[14,14,3],[15,16,2]];
+const QTEXT = [
+  "I vilken omgång tar Hammarby sin sjunde poäng?",
+  "I vilken omgång tar Hammarby sin tredje seger?",
+  "Hur många poäng tar Hammarby mot AIK?",
+  "Hur många poäng tar Hammarby mot Djurgården?",
+  "I vilken omgång avgörs vem som vinner Allsvenskan?"
+];
+const VIEWS = [["stallning","Ställning"],["matcher","Matcher"],["malskyttar","Målskyttar"],["fragor","Frågor och tabell"],["regler","Så räknas poängen"]];
+const app = document.getElementById("app");
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const parse = s => { const m = /^(\d{1,2})-(\d{1,2})$/.exec(s || ""); return m ? [+m[1], +m[2]] : null; };
+const sign = x => (x > 0) - (x < 0);
+function matchPts(tip, res){
+  const t = parse(tip), r = parse(res);
+  if (!t || !r) return null;
+  if (t[0] === r[0] && t[1] === r[1]) return 3;
+  return sign(t[0]-t[1]) === sign(r[0]-r[1]) ? 1 : 0;
+}
+function bandOf(pos){ for (const b of BANDS) if (pos >= b[0] && pos <= b[1]) return b; return null; }
+
+function answers(D){
+  let pts = 0, wins = 0, q1 = null, q2 = null, played = 0;
+  const vs = {AIK:[], "Djurgården":[]};
+  D.fixtures.forEach((f, i) => {
+    const r = parse(D.results[i]); if (!r) return;
+    played = i + 1;
+    const hb = f[0] === "Hammarby" ? r[0] : r[1], op = f[0] === "Hammarby" ? r[1] : r[0];
+    const p = hb > op ? 3 : hb === op ? 1 : 0;
+    pts += p; if (p === 3) wins++;
+    if (q1 === null && pts >= 7) q1 = i + 1;
+    if (q2 === null && wins >= 3) q2 = i + 1;
+    const opp = f[0] === "Hammarby" ? f[1] : f[0];
+    if (vs[opp]) vs[opp].push(p);
+  });
+  const count = t => D.fixtures.filter(f => f.includes(t)).length;
+  const q3 = vs.AIK.length === count("AIK") ? vs.AIK.reduce((a,b)=>a+b,0) : null;
+  const q4 = vs["Djurgården"].length === count("Djurgården") ? vs["Djurgården"].reduce((a,b)=>a+b,0) : null;
+  const q5 = Number.isInteger(D.qAnswer5) ? D.qAnswer5 : null;
+  return {q:[q1,q2,q3,q4,q5], played, hbPts:pts};
+}
+function tableReady(D){ return D.finalTable && D.finalTable.length === 16 && new Set(D.finalTable).size === 16 && D.finalTable.every(Boolean); }
+
+function compute(D){
+  const A = answers(D);
+  const pl = Object.fromEntries(D.players.map(p => [p.name, p]));
+  const ready = tableReady(D);
+  const actualPos = ready ? Object.fromEntries(D.finalTable.map((t,i) => [t, i+1])) : null;
+  const rows = D.participants.map(p => {
+    const mp = p.tips.map((t,i) => matchPts(t, D.results[i]));
+    const res = mp.reduce((a,b) => a + (b || 0), 0);
+    const sc = p.scorers.map(n => { const x = pl[n]; return x ? x.goals * MULT[x.cat] : 0; });
+    const qp = p.q.map((a,i) => A.q[i] !== null && a === A.q[i] ? 5 : 0);
+    const tp = (p.table || []).map((t,i) => {
+      if (!ready) return null;
+      const b = bandOf(i+1), ap = actualPos[t];
+      return ap >= b[0] && ap <= b[1] ? b[2] : 0;
+    });
+    const s = {res, mal: sc.reduce((a,b)=>a+b,0), fr: qp.reduce((a,b)=>a+b,0), tab: tp.reduce((a,b)=>a+(b||0),0)};
+    s.tot = s.res + s.mal + s.fr + s.tab;
+    return {p, mp, sc, qp, tp, s};
+  });
+  rows.sort((a,b) => b.s.tot - a.s.tot || b.s.res - a.s.res || a.p.name.localeCompare(b.p.name, "sv"));
+  rows.forEach((r,i) => { r.rank = i && r.s.tot === rows[i-1].s.tot ? rows[i-1].rank : i + 1; });
+  return {rows, A, ready};
+}
+
+function fix(f, i){ const a = f[0] === "Hammarby" ? `<span class="home">${esc(f[0])}</span>` : esc(f[0]); const b = f[1] === "Hammarby" ? `<span class="home">${esc(f[1])}</span>` : esc(f[1]); return `${a} – ${b}`; }
+const ptCell = v => v === null ? '<span class="muted">–</span>' : `<span class="pt p${v}">${v}</span>`;
+function fmtDate(iso){ if (!iso) return ""; const d = new Date(iso + "T12:00:00"); return d.toLocaleDateString("sv-SE", {day:"numeric", month:"long", year:"numeric"}); }
+
+let C = compute(S), openRound = null, openPerson = null;
+function current(){ const h = location.hash.slice(1); if (h === "admin") return canAdmin ? "admin" : "stallning"; return VIEWS.some(v => v[0] === h) ? h : "stallning"; }
+
+function render(){
+  C = compute(S);
+  const v = current(), lead = C.rows[0];
+  const navItems = VIEWS.concat(canAdmin ? [["admin","Uppdatera"]] : []);
+  app.innerHTML = `
+  <header class="hero"><div class="plate">
+    <div><h1>Bajentipset ${esc(S.season)}</h1><p>${C.A.played} av 30 omgångar spelade, uppdaterad ${esc(fmtDate(S.updated))}</p></div>
+    <div class="lead"><p>Leder just nu</p><b>${esc(lead.p.name)}, ${lead.s.tot} p</b></div>
+  </div></header>
+  <nav aria-label="Vyer"><div class="in">${navItems.map(([k,l]) => `<a href="#${k}"${k===v?' aria-current="page"':''}>${esc(l)}</a>`).join("")}</div></nav>
+  <main>${({stallning:vStand, matcher:vMatches, malskyttar:vScorers, fragor:vQuestions, regler:vRules, admin:vAdmin})[v]()}</main>
+  ${openPerson ? vPerson(openPerson) : ""}`;
+}
+
+function vStand(){
+  return `<h2>Ställning</h2><p class="intro">Tryck på en deltagare för att se alla tips och var poängen kommer ifrån.</p>
+  <div class="board" role="list">
+   <div class="row head" aria-hidden="true"><span>#</span><span>Deltagare</span><span class="c">Resultat</span><span class="c">Mål&shy;skyttar</span><span class="c">Frågor</span><span class="c">Tabell</span><span class="c" style="display:block">Totalt</span></div>
+   ${C.rows.map(r => `<button class="row${r.rank<=3?' m'+r.rank:''}" role="listitem" data-person="${esc(r.p.name)}">
+     <span class="rk">${r.rank}</span>
+     <span class="nm">${esc(r.p.name)}<span class="sub">Resultat ${r.s.res}, målskyttar ${r.s.mal}, frågor ${r.s.fr}${C.ready?`, tabell ${r.s.tab}`:""}</span></span>
+     <span class="c">${r.s.res}</span><span class="c">${r.s.mal}</span><span class="c">${r.s.fr}</span><span class="c">${C.ready ? r.s.tab : "–"}</span>
+     <span class="tot">${r.s.tot}</span></button>`).join("")}
+  </div>`;
+}
+
+function vMatches(){
+  return `<h2>Matcher</h2><p class="intro">Hammarbys 30 omgångar. Tryck på en match för att se vad alla tippade.</p>
+  <div>${S.fixtures.map((f,i) => {
+    const res = S.results[i], has = !!parse(res);
+    let meta = "Inte spelad än";
+    if (has){ const ex = C.rows.filter(r => r.mp[i] === 3).length, ut = C.rows.filter(r => r.mp[i] === 1).length;
+      meta = `${ex} exakt rätt, ${ut} rätt utgång`; }
+    return `<button class="match" data-round="${i}" aria-expanded="${openRound===i}"><span class="r">${i+1}</span><span>${fix(f)}</span><span class="s${has?'':' none'}">${has?esc(res):"–"}</span><span class="meta">${meta}</span></button>${openRound===i?roundDetail(i):""}`;
+  }).join("")}</div>`;
+}
+function roundDetail(i){
+  const has = !!parse(S.results[i]);
+  const list = C.rows.map(r => ({n:r.p.name, t:r.p.tips[i], v:r.mp[i]}));
+  const chip = x => `<span class="chip${x.v===3?' p3':x.v===1?' p1':''}">${esc(x.n)} <b>${esc(x.t||"–")}</b></span>`;
+  if (!has){ list.sort((a,b) => a.n.localeCompare(b.n,"sv")); return `<div class="detail"><div class="grp"><h4>Alla tips</h4><div class="chips">${list.map(chip).join("")}</div></div></div>`; }
+  const g = (v,h) => { const l = list.filter(x => x.v === v); return l.length ? `<div class="grp"><h4>${h} (${l.length})</h4><div class="chips">${l.map(chip).join("")}</div></div>` : ""; };
+  return `<div class="detail">${g(3,"Exakt rätt, 3 poäng")}${g(1,"Rätt utgång, 1 poäng")}${g(0,"Fel, 0 poäng")}</div>`;
+}
+
+function vScorers(){
+  const cats = ["Backar","Mittfältare","Anfallare","Allsvenskan"];
+  return `<h2>Målskyttar</h2><p class="intro">Varje deltagare har valt en back, en mittfältare och en anfallare från Hammarby samt en spelare från ett annat allsvenskt lag. Poängen är antal mål gånger värdet för positionen.</p>
+  ${cats.map(c => `<h3>${CATNAME[c]}, ${MULT[c]} ${MULT[c]===1?"poäng":"poäng"} per mål</h3><div class="scroll"><table>
+   <thead><tr><th>Spelare</th><th>Klubb</th><th class="r">Mål</th><th class="r">Poäng</th><th>Vald av</th></tr></thead><tbody>
+   ${S.players.filter(p => p.cat === c).sort((a,b) => b.goals - a.goals).map(p => {
+     const by = S.participants.filter(x => x.scorers.includes(p.name)).length;
+     return `<tr><td>${esc(p.name)}</td><td>${esc(p.club)}</td><td class="r">${p.goals}</td><td class="r"><b>${p.goals*MULT[c]}</b></td><td>${by} st</td></tr>`; }).join("")}
+   </tbody></table></div>`).join("")}`;
+}
+
+function vQuestions(){
+  const A = C.A;
+  const qs = QTEXT.map((t,i) => {
+    const ans = A.q[i];
+    const right = ans === null ? [] : S.participants.filter(p => p.q[i] === ans).map(p => p.name);
+    const dist = {}; S.participants.forEach(p => { const k = p.q[i] == null ? "–" : p.q[i]; dist[k] = (dist[k]||0) + 1; });
+    const distTxt = Object.keys(dist).sort((a,b) => +a - +b).map(k => `<span class="chip${+k===ans?' p3':''}">${esc(k)} <b>${dist[k]} st</b></span>`).join("");
+    return `<div class="card"><h3 style="margin-top:0">${i+1}. ${esc(t)}</h3>
+      <p>${ans === null ? '<span class="muted">Inte avgjort än.</span>' : `Rätt svar: <b>${ans}</b>. ${right.length ? `Rätt: ${right.map(esc).join(", ")}.` : "Ingen hade rätt."}`}</p>
+      <div class="chips">${distTxt}</div></div>`;
+  }).join("");
+  let tab;
+  if (C.ready){
+    tab = `<div class="scroll"><table><thead><tr><th class="r">Plats</th><th>Lag</th></tr></thead><tbody>${S.finalTable.map((t,i)=>`<tr><td class="r">${i+1}</td><td>${esc(t)}</td></tr>`).join("")}</tbody></table></div>`;
+  } else tab = `<p class="muted">Sluttabellen fylls i när säsongen är slut. Då räknas tabellpoängen ut automatiskt.</p>`;
+  return `<h2>Frågor och tabell</h2><p class="intro">Varje rätt svar ger 5 poäng. Frågorna 1–4 räknas ut automatiskt från matchresultaten.</p>${qs}<h3>Allsvenskans sluttabell</h3>${tab}`;
+}
+
+function vRules(){
+  return `<div class="rules"><h2>Så räknas poängen</h2>
+  <h3>Resultattips</h3><p>Alla tippar slutresultatet i Hammarbys 30 matcher. Exakt rätt resultat ger <b>3 poäng</b>. Rätt utgång (hemmaseger, oavgjort eller bortaseger) men fel siffror ger <b>1 poäng</b>.</p>
+  <h3>Målskyttar</h3><p>Alla väljer fyra spelare. Varje mål ger poäng efter position: back <b>3</b>, mittfältare <b>2</b>, anfallare <b>1</b> och spelare i ett annat allsvenskt lag <b>1</b> poäng per mål.</p>
+  <h3>Fem frågor</h3><p>Varje rätt svar ger <b>5 poäng</b>.</p>
+  <h3>Sluttabellen</h3><p>Alla tippar hela Allsvenskans tabell. Ett lag ger poäng om det hamnar i samma zon som du tippade:</p>
+  <div class="scroll"><table><thead><tr><th>Tippad plats</th><th>Laget ska sluta på</th><th class="r">Poäng</th></tr></thead><tbody>
+  <tr><td>1</td><td>plats 1</td><td class="r">4</td></tr><tr><td>2</td><td>plats 2</td><td class="r">3</td></tr>
+  <tr><td>3–4</td><td>plats 3 eller 4</td><td class="r">2</td></tr><tr><td>5–13</td><td>någon av plats 5–13</td><td class="r">1</td></tr>
+  <tr><td>14</td><td>plats 14</td><td class="r">3</td></tr><tr><td>15–16</td><td>plats 15 eller 16</td><td class="r">2</td></tr></tbody></table></div>
+  <h3>Lika poäng</h3><p>Vid lika totalpoäng delar deltagarna placering.</p></div>`;
+}
+
+function vPerson(name){
+  const r = C.rows.find(x => x.p.name === name); if (!r) return "";
+  const p = r.p, pl = Object.fromEntries(S.players.map(x => [x.name, x]));
+  const matches = S.fixtures.map((f,i) => `<tr><td class="r">${i+1}</td><td>${fix(f)}</td><td class="r">${esc(p.tips[i]||"–")}</td><td class="r">${esc(S.results[i]||"–")}</td><td class="r">${ptCell(r.mp[i])}</td></tr>`).join("");
+  const sc = p.scorers.map((n,i) => { const x = pl[n]; return `<tr><td>${x?CATNAME[x.cat]:""}</td><td>${esc(n)}</td><td class="r">${x?x.goals:0}</td><td class="r"><b>${r.sc[i]}</b></td></tr>`; }).join("");
+  const qs = QTEXT.map((t,i) => `<tr><td style="white-space:normal">${esc(t)}</td><td class="r">${esc(p.q[i]??"–")}</td><td class="r">${C.A.q[i]??"–"}</td><td class="r">${C.A.q[i]===null?'<span class="muted">–</span>':ptCell(r.qp[i])}</td></tr>`).join("");
+  const tb = (p.table||[]).map((t,i) => `<tr><td class="r">${i+1}</td><td>${esc(t)}</td><td class="r">${C.ready?S.finalTable.indexOf(t)+1:"–"}</td><td class="r">${ptCell(r.tp[i])}</td></tr>`).join("");
+  return `<div class="panel" data-close="1"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(p.name)}">
+   <div class="top"><h2>${esc(p.name)}</h2><button class="x" data-close="1">Stäng</button></div>
+   <p class="muted" style="margin:0">Plats ${r.rank} av ${C.rows.length}</p>
+   <div class="sum"><div><span>Resultat</span><b>${r.s.res}</b></div><div><span>Målskyttar</span><b>${r.s.mal}</b></div><div><span>Frågor</span><b>${r.s.fr}</b></div><div><span>Tabell</span><b>${C.ready?r.s.tab:"–"}</b></div><div class="t"><span>Totalt</span><b>${r.s.tot}</b></div></div>
+   <h3>Resultattips</h3><div class="scroll"><table><thead><tr><th class="r">Omg</th><th>Match</th><th class="r">Tips</th><th class="r">Rätt</th><th class="r">P</th></tr></thead><tbody>${matches}</tbody></table></div>
+   <h3>Målskyttar</h3><div class="scroll"><table><thead><tr><th>Position</th><th>Spelare</th><th class="r">Mål</th><th class="r">P</th></tr></thead><tbody>${sc}</tbody></table></div>
+   <h3>Frågor</h3><div class="scroll"><table><thead><tr><th>Fråga</th><th class="r">Svar</th><th class="r">Rätt</th><th class="r">P</th></tr></thead><tbody>${qs}</tbody></table></div>
+   <h3>Tabelltips</h3><div class="scroll"><table><thead><tr><th class="r">Tippad</th><th>Lag</th><th class="r">Blev</th><th class="r">P</th></tr></thead><tbody>${tb}</tbody></table></div>
+  </div></div>`;
+}
+
+/* ---------- Admin ---------- */
+function vAdmin(){
+  if (!draft) draft = JSON.parse(JSON.stringify(S));
+  const D = draft;
+  const matches = D.fixtures.map((f,i) => `<div class="arow"><span class="num muted">${i+1}</span><span class="f">${fix(f)}</span><input class="sc${D.results[i] && !parse(D.results[i]) ? ' bad' : ''}" data-res="${i}" value="${esc(D.results[i]||"")}" inputmode="numeric" placeholder="–" aria-label="Resultat omgång ${i+1}"></div>`).join("");
+  const cats = ["Backar","Mittfältare","Anfallare","Allsvenskan"];
+  const goals = cats.map(c => `<h3>${CATNAME[c]}</h3><div class="agrid">${D.players.map((p,i)=>[p,i]).filter(([p])=>p.cat===c).map(([p,i]) => `<div class="goal"><span>${esc(p.name)}<small>${esc(p.club)}</small></span><button class="step" data-goal="${i}" data-d="-1" aria-label="Ett mål mindre för ${esc(p.name)}">−</button><output>${p.goals}</output><button class="step" data-goal="${i}" data-d="1" aria-label="Ett mål till för ${esc(p.name)}">+</button></div>`).join("")}</div>`).join("");
+  const ft = D.finalTable && D.finalTable.length ? D.finalTable : Array(16).fill("");
+  const counts = {}; ft.forEach(t => { if (t) counts[t] = (counts[t]||0)+1; });
+  const table = ft.map((t,i) => `<label><span class="num muted">${i+1}</span><select data-pos="${i}" class="${t && counts[t]>1 ? 'bad' : ''}"><option value="">Välj lag</option>${D.teams.map(x => `<option${x===t?' selected':''}>${esc(x)}</option>`).join("")}</select></label>`).join("");
+  return `<div class="admin"><h2>Uppdatera</h2>
+   <p class="intro">Fyll bara i det som händer. Poäng, ställning och placeringar räknas ut av sidan. ${STANDALONE ? "När du är klar trycker du på Ladda ner. Du får då en ny index.html som du publicerar på Netlify." : "Inget sparas förrän du trycker på Spara."}</p>
+   <h3>Matchresultat</h3><p class="muted" style="margin-top:0">Skriv som hemmalag–bortalag, till exempel 2-1.</p><div class="agrid">${matches}</div>
+   <h3>Målskyttar</h3>${goals}
+   <h3>Fråga 5</h3><label>${esc(QTEXT[4])} <input class="q5" type="number" min="1" max="30" data-q5="1" value="${D.qAnswer5 ?? ""}" style="width:5rem"></label>
+   <p class="muted">Frågorna 1–4 räknas ut automatiskt från matchresultaten.</p>
+   <h3>Allsvenskans sluttabell</h3><p class="muted" style="margin-top:0">Fyll i alla 16 platser när säsongen är slut.</p><div class="tgrid">${table}</div>
+   <div class="savebar"><span id="savemsg">${esc(msg || (dirty ? "Du har ändringar som inte är sparade." : "Inga ändringar."))}</span>
+    <button class="btn ghost" data-undo="1"${dirty&&!saving?"":" disabled"}>Ångra ändringar</button>
+    <button class="btn" data-save="1"${dirty&&!saving?"":" disabled"}>${saving?"Sparar…":(STANDALONE?"Ladda ner uppdaterad sida":"Spara")}</button></div></div>`;
+}
+function touch(){ dirty = true; msg = ""; const m = document.getElementById("savemsg"); if (m) m.textContent = "Du har ändringar som inte är sparade."; document.querySelectorAll("[data-save],[data-undo]").forEach(b => b.disabled = saving); }
+function normScore(v){ v = v.trim().replace(/[–—.,:\s]+/g, "-"); return v; }
+
+function buildHtml(D){
+  const json = JSON.stringify(D).replace(/</g, "\\u003c");
+  const css = document.getElementById("css").textContent;
+  const js = document.getElementById("app-js").textContent;
+  return `<!doctype html>\n<html lang="sv">\n<head>${HEAD}<style id="css">${css}</style></head>\n<body><div id="app"></div>\n<scr${""}ipt id="data" type="application/json">${json}</scr${""}ipt>\n<scr${""}ipt id="app-js">${js}</scr${""}ipt>\n</body>\n</html>\n`;
+}
+async function save(){
+  if ((!artifactNs && !STANDALONE) || saving) return;
+  const D = JSON.parse(JSON.stringify(draft));
+  D.results = D.results.map(r => parse(r) ? r : "");
+  if (D.finalTable && !D.finalTable.some(Boolean)) D.finalTable = [];
+  const t = new Date(); D.updated = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`;
+  if (STANDALONE){
+    const url = URL.createObjectURL(new Blob([buildHtml(D)], {type:"text/html"}));
+    const a = document.createElement("a"); a.href = url; a.download = "index.html"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    S = D; draft = null; dirty = false; msg = "Filen index.html har laddats ner. Publicera den på Netlify så ser alla den nya ställningen."; render(); return;
+  }
+  saving = true; msg = "Sparar…"; render();
+  try { await artifactNs.publish(buildHtml(D)); msg = "Sparat. Sidan laddas om."; }
+  catch(e){
+    saving = false; const c = e && e.code;
+    if (c === "conflict") msg = "Någon annan sparade samtidigt. Sidan laddas om med den senaste versionen, fyll i dina ändringar igen.";
+    else if (c === "not_writer" || c === "not_granted" || c === "consent_required" || c === "capability_disabled" || c === "not_declared"){ msg = ""; canAdmin = false; location.hash = "stallning"; }
+    else if (c === "rate_limited") msg = "För många sparningar på kort tid. Vänta en stund och tryck på Spara igen.";
+    else msg = "Det gick inte att spara just nu. Försök igen om en stund.";
+    render();
+  }
+}
+
+app.addEventListener("click", e => {
+  const t = e.target.closest("[data-person],[data-round],[data-close],[data-goal],[data-save],[data-undo]");
+  if (!t) return;
+  if (t.dataset.close && (e.target === t || t.classList.contains("x"))){ const n = openPerson; openPerson = null; render(); const b = app.querySelector(`[data-person="${CSS.escape(n)}"]`); if (b) b.focus(); return; }
+  if (t.dataset.close) return;
+  if (t.dataset.person){ openPerson = t.dataset.person; render(); const x = app.querySelector(".x"); if (x) x.focus(); return; }
+  if (t.dataset.round){ const i = +t.dataset.round; openRound = openRound === i ? null : i; render(); const b = app.querySelector(`[data-round="${i}"]`); if (b) b.focus(); return; }
+  if (t.dataset.goal){ const p = draft.players[+t.dataset.goal]; p.goals = Math.max(0, p.goals + (+t.dataset.d)); t.parentElement.querySelector("output").textContent = p.goals; touch(); return; }
+  if (t.dataset.undo){ draft = null; dirty = false; msg = ""; render(); return; }
+  if (t.dataset.save) save();
+});
+app.addEventListener("change", e => {
+  const t = e.target;
+  if (t.dataset.res !== undefined){ const v = normScore(t.value); t.value = v; draft.results[+t.dataset.res] = v; t.classList.toggle("bad", !!v && !parse(v)); touch(); }
+  else if (t.dataset.q5){ const n = parseInt(t.value, 10); draft.qAnswer5 = Number.isInteger(n) ? n : null; touch(); }
+  else if (t.dataset.pos !== undefined){
+    if (!draft.finalTable || draft.finalTable.length !== 16) draft.finalTable = Array(16).fill("");
+    draft.finalTable[+t.dataset.pos] = t.value; touch();
+    const c = {}; draft.finalTable.forEach(x => { if (x) c[x] = (c[x]||0)+1; });
+    app.querySelectorAll("select[data-pos]").forEach(s => s.classList.toggle("bad", !!s.value && c[s.value] > 1));
+  }
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape" && openPerson){ openPerson = null; render(); } });
+window.addEventListener("hashchange", () => { openPerson = null; render(); window.scrollTo(0,0); });
+window.addEventListener("beforeunload", e => { if (dirty && !saving){ e.preventDefault(); e.returnValue = ""; } });
+
+render();
+(async () => {
+  try {
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [a, u] = await Promise.all([window.claude.use("artifact"), window.claude.use("user")]);
+    if (!a) return;
+    artifactNs = a;
+    let ok = true;
+    if (u) { try { ok = await u.canEdit(); } catch(_) { ok = false; } }
+    if (ok){ canAdmin = true; render(); }
+  } catch(_) {}
+})();
+})();
+</script>
+</body>
+</html>
